@@ -20,7 +20,7 @@ export const projects = pgTable("projects", {
     theme?: string;
     tabSize?: number;
     wordWrap?: boolean;
-  }>().default({}),
+  }>().default({}).notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
@@ -31,7 +31,7 @@ export const files = pgTable("files", {
   path: text("path").notNull(),
   content: text("content").default(""),
   isDirectory: boolean("is_directory").default(false).notNull(),
-  parentId: integer("parent_id").references(() => files.id),
+  parentId: integer("parent_id").references((): any => files.id),
   projectId: integer("project_id").references(() => projects.id).notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),

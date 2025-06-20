@@ -65,17 +65,30 @@ export class DatabaseStorage implements IStorage {
   }
 
   async createProject(project: InsertProject & { userId: number }): Promise<Project> {
+    const projectData = {
+      name: project.name,
+      description: project.description,
+      template: project.template,
+      userId: project.userId,
+      settings: project.settings || {}
+    };
+    
     const [newProject] = await db
       .insert(projects)
-      .values(project)
+      .values([projectData])
       .returning();
     return newProject;
   }
 
   async updateProject(id: number, updates: Partial<InsertProject>): Promise<Project | undefined> {
+    const updateData: any = { ...updates, updatedAt: new Date() };
+    if (updates.settings) {
+      updateData.settings = updates.settings;
+    }
+    
     const [updated] = await db
       .update(projects)
-      .set({ ...updates, updatedAt: new Date() })
+      .set(updateData)
       .where(eq(projects.id, id))
       .returning();
     return updated || undefined;
@@ -83,7 +96,7 @@ export class DatabaseStorage implements IStorage {
 
   async deleteProject(id: number): Promise<boolean> {
     const result = await db.delete(projects).where(eq(projects.id, id));
-    return result.rowCount > 0;
+    return (result.rowCount ?? 0) > 0;
   }
 
   // File operations
@@ -110,7 +123,7 @@ export class DatabaseStorage implements IStorage {
   async createFile(file: InsertFile & { projectId: number }): Promise<FileNode> {
     const [newFile] = await db
       .insert(files)
-      .values(file)
+      .values([file])
       .returning();
     return newFile;
   }
@@ -126,14 +139,15 @@ export class DatabaseStorage implements IStorage {
 
   async deleteFile(id: number): Promise<boolean> {
     const result = await db.delete(files).where(eq(files.id, id));
-    return result.rowCount > 0;
+    return (result.rowCount ?? 0) > 0;
   }
 
   async getFileTree(projectId: number): Promise<FileNode[]> {
-    return await db
+    const fileResults = await db
       .select()
       .from(files)
       .where(eq(files.projectId, projectId));
+    return fileResults;
   }
 
   // Terminal session operations
@@ -158,7 +172,7 @@ export class DatabaseStorage implements IStorage {
       .update(terminalSessions)
       .set({ isActive: false })
       .where(eq(terminalSessions.sessionId, sessionId));
-    return result.rowCount > 0;
+    return (result.rowCount ?? 0) > 0;
   }
 }
 
