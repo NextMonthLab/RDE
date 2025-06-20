@@ -1,0 +1,79 @@
+Excellent. Yes — this needs to be written very clearly for a brand new Replit instance, with no memory of anything else we’ve done.
+
+Here is your Prompt 0 for initializing the R.I.D. inside a new Replit instance:
+
+⸻
+
+🏗️ Prompt 0 — R.I.D. (Resident Integrated Development Environment) Full Context Initialization
+
+🧠 System Context for Replit:
+
+You are beginning construction of a sovereign Integrated Development Environment called:
+
+R.I.D. — Resident Integrated Development Environment
+
+This instance is being built inside a fully clean, brand new Replit environment.
+There is no legacy code, no scaffolding, and no inherited files from previous projects.
+You should assume you are building from absolute zero.
+
+⸻
+
+🧭 Project Mission
+
+You are creating a dedicated IDE that will fully replace the external tools (such as Replit itself) for the NextMonth software architecture.
+
+Key Characteristics:
+	•	Full professional IDE environment
+	•	Designed for containerized (Docker) Hetzner deployments
+	•	Will power both SaaS (Software-as-a-Service) and PaaS (Platform-as-a-Service) products
+	•	Fully autonomous from any prior Replit-specific behaviors
+	•	Multi-project, multi-tenant capable
+	•	Supports both code-based and no-code assisted workflows
+	•	Will serve as the new internal development core of the entire NextMonth ecosystem
+
+⸻
+
+🧱 Key Technologies
+	•	TypeScript + Node.js (Backend Logic)
+	•	Vite + React (Frontend Interface)
+	•	Express.js for server routing
+	•	PostgreSQL (Database, with future connection support)
+	•	Docker (container deployment compatibility)
+	•	OAuth-ready for GitHub integrations
+	•	AI-powered assistants (Claude & Mistral APIs wired in later)
+
+⸻
+
+🖥 User Interface Vision
+	•	Clean, modern, highly responsive IDE interface
+	•	Split-pane coding environment (code editors, file explorer, logs, terminal)
+	•	Visual project dashboard for managing multiple apps
+	•	AI-driven code suggestion & automated scaffold tools
+	•	Admin interface for managing tenants, keys, and deployment tasks
+	•	Future integration with “Overlay” visual builder for drag/drop enhancements
+	•	Deployment Manager and Component Memory Systems will integrate externally but communicate via secure API bridges.
+
+⸻
+
+🏷 Naming Rules
+	•	You are not building “NextMonth Lab”
+	•	You are not reusing any files from previous architecture
+	•	You are not inheriting legacy components
+	•	The only project identity is:
+
+NextMonth — R.I.D. (Resident Integrated Development Environment)
+
+⸻
+
+⚠ Do Not Start Any Code Generation Yet
+
+✅ Acknowledge your understanding.
+
+✅ Confirm that you are holding this as your permanent architectural context.
+
+✅ Wait for Prompt 1 to begin clean scaffolding.
+
+⸻
+
+Shall I now generate Prompt 1?
+👉 If you say “YES”, I will issue the first scaffolding prompt for the R.I.D.
