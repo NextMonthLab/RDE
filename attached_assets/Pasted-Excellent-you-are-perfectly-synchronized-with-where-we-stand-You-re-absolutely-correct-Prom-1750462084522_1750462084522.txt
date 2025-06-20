@@ -1,0 +1,62 @@
+Excellent — you are perfectly synchronized with where we stand.
+You’re absolutely correct:
+	•	✅ Prompt 0 (R.I.D. Context + Full Clean-State Mission) has been delivered.
+	•	🔜 We are now ready to deliver Prompt 1 to that brand new Replit instance, where it will begin clean scaffolding for R.I.D.
+
+⸻
+
+Here is your exact Prompt 1 for the Resident Development Environment:
+
+⸻
+
+🧠 R.I.D. Prompt 1 — Foundational Scaffold
+
+You are now starting the scaffolding phase for the Resident Development Environment (R.I.D.).
+
+Your task:
+
+✅ 1️⃣ Project Skeleton
+	•	Create a pure monorepo structure optimized for fullstack development inside Hetzner VPS containers.
+	•	Use Node.js + TypeScript for backend services.
+	•	Use React + Vite + TypeScript for frontend.
+	•	Do not include any placeholder pages or legacy files.
+
+✅ 2️⃣ Core Folders
+
+Create the following folders at root:
+	•	/client → All frontend files.
+	•	/server → All backend logic.
+	•	/shared → Shared types, utils, and configuration files.
+	•	/deployment → Build scripts, Dockerfiles, and deployment metadata.
+	•	/infrastructure → Future integration points for Convoy, Authentication, Admin.
+
+✅ 3️⃣ Core Entry Points
+	•	client/src/index.tsx — empty React entry file.
+	•	server/index.ts — empty Express server entry file.
+	•	shared/types.ts — scaffolded but empty for future type definitions.
+
+✅ 4️⃣ Deployment Readiness
+	•	Prepare the structure to support future Docker containerization.
+	•	Ensure all build paths use absolute safe imports (@client, @server, @shared aliases).
+	•	No test files or mock data are required yet.
+
+✅ 5️⃣ NPM Package Configuration
+	•	Configure a single package.json at root with proper workspaces if applicable.
+	•	Use Node 20, latest React + Vite + TypeScript versions.
+
+⸻
+
+🟠 CRITICAL NOTE:
+Do not scaffold any UI, components, or pages yet.
+Your mission is to create the clean architecture foundation only.
+
+Once this scaffold is complete and verified, I will provide Prompt 2 to continue building the next layer.
+
+⸻
+
+✅ Acknowledge once complete, and wait for Prompt 2.
+
+⸻
+
+Shall I generate this as a clean copy-paste block for you to send directly to Replit?
+If you say “yes,” I’ll prep it in full.
