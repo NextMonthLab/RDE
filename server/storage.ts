@@ -70,21 +70,22 @@ export class DatabaseStorage implements IStorage {
       description: project.description,
       template: project.template,
       userId: project.userId,
-      settings: project.settings || {}
+      settings: project.settings as { theme?: string; tabSize?: number; wordWrap?: boolean; } || {}
     };
     
     const [newProject] = await db
       .insert(projects)
-      .values([projectData])
+      .values(projectData)
       .returning();
     return newProject;
   }
 
   async updateProject(id: number, updates: Partial<InsertProject>): Promise<Project | undefined> {
-    const updateData: any = { ...updates, updatedAt: new Date() };
-    if (updates.settings) {
-      updateData.settings = updates.settings;
-    }
+    const updateData = {
+      ...updates,
+      updatedAt: new Date(),
+      settings: updates.settings as { theme?: string; tabSize?: number; wordWrap?: boolean; } | undefined
+    };
     
     const [updated] = await db
       .update(projects)
