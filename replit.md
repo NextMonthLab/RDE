@@ -119,7 +119,14 @@ NextMonth R.I.D. is a web-based Integrated Development Environment (IDE) designe
 - **Data Persistence**: Full ACID compliance with PostgreSQL
 
 ## Changelog
-- June 20, 2025. Initial setup
+- June 20, 2025. Initial R.I.D. setup with complete IDE functionality
+- June 20, 2025. Phase 2 Expansion: Added Unified Builder Framework
+  - Created ProjectHub for SaaS/PaaS path selection
+  - Implemented VisualBuilder for drag-and-drop interface creation
+  - Built AdminPanelBuilder for backend tool composition
+  - Added BusinessPlanner with goal tracking and roadmap management
+  - Enhanced routing system for builder modes
+  - Extended project schema to support builder configurations
 
 ## User Preferences
 

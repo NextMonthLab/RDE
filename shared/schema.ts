@@ -20,6 +20,8 @@ export const projects = pgTable("projects", {
     theme?: string;
     tabSize?: number;
     wordWrap?: boolean;
+    builderType?: 'saas' | 'paas';
+    builderConfig?: any;
   }>().default({}).notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),

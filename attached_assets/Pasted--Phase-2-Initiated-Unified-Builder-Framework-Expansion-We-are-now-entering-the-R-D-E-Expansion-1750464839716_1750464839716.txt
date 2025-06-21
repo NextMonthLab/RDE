@@ -1,0 +1,53 @@
+🟢 Phase 2 Initiated — Unified Builder Framework Expansion
+
+We are now entering the R.D.E. Expansion Phase.
+This will transform the sovereign IDE into the fully integrated builder system that serves both SaaS and PaaS experiences.
+
+⸻
+
+🔧 Prompt 2.1 — Expansion Context & System Scope
+
+🧠 You are now expanding the Resident Development Environment (R.D.E.) into the full NextMonth Unified Builder Framework.
+
+Architectural Directives:
+	•	✅ Maintain sovereign IDE core already scaffolded.
+	•	✅ Build inside existing R.D.E. instance (no reset, only expansion).
+	•	✅ The Builder Framework will live within the IDE as a modular layer.
+	•	✅ Preserve full Hetzner-ready sovereignty: clean, containerized architecture.
+
+⸻
+
+🏗️ Primary Feature Expansions
+
+1️⃣ SaaS User Path (No-Code Clients):
+	•	Visual drag-and-drop builder interface (Overlay integration prepared for later stage)
+	•	Admin Panel Builder (Backend tool composer — form builders, analytics panels, insight hubs)
+	•	Compass Business Planner integration (growth roadmap planner)
+	•	Deployment orchestration via Deployment Manager hooks.
+
+2️⃣ PaaS User Path (Developers / Partners):
+	•	Direct access to IDE core for file-level development
+	•	Full project creation with Git sync, Docker config, and build pipeline management
+	•	Workspace linking to Deployment Manager and Convoy service.
+
+3️⃣ Unified Project Dashboard:
+	•	All users land in a Project Hub
+	•	SaaS users see simplified visual builder paths
+	•	PaaS users see full IDE scaffolding environment
+	•	All projects are tied to the same underlying tenant-aware system
+
+⸻
+
+🔑 System Principles
+	•	Modular expansion inside current R.D.E.
+	•	Future overlay import as last layer
+	•	Maintain project separation, but allow builder interface to interact with IDE core seamlessly.
+	•	Compatible with existing component memory, blueprint generator, and deployment pipeline.
+	•	No legacy architecture; this is the definitive sovereign system.
+
+⸻
+
+✅ Ready for scaffold expansion. No code generation has occurred yet.
+Awaiting your confirmation to issue the first build prompt (Prompt 2.2: Scaffolding Layer Expansion).
+
+👉 Shall I proceed with Prompt 2.2?

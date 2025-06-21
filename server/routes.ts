@@ -96,7 +96,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const projectData = insertProjectSchema.parse(req.body);
       const project = await storage.createProject({ ...projectData, userId: 1 });
       
-      // Create initial project structure
+      // Create initial project structure based on template
+      const isSaasProject = projectData.template.includes('saas') || projectData.template.includes('visual');
+      
       const rootFiles = [
         {
           name: 'src',
@@ -110,21 +112,59 @@ export async function registerRoutes(app: Express): Promise<Server> {
           content: JSON.stringify({
             name: project.name,
             version: '1.0.0',
-            scripts: {
+            scripts: isSaasProject ? {
+              dev: 'npm run start',
+              build: 'npm run build:saas',
+              start: 'node index.js',
+              deploy: 'npm run deploy:saas'
+            } : {
               dev: 'npm run start',
               build: 'npm run build',
               start: 'node index.js'
-            }
+            },
+            dependencies: isSaasProject ? {
+              "react": "^18.0.0",
+              "react-dom": "^18.0.0",
+              "@nextmonth/builder": "^1.0.0"
+            } : {}
           }, null, 2),
           projectId: project.id,
         },
         {
           name: 'README.md',
           path: '/README.md',
-          content: `# ${project.name}\n\n${project.description || 'A new project created with NextMonth R.I.D.'}`,
+          content: `# ${project.name}\n\n${project.description || 'A new project created with NextMonth R.I.D.'}\n\n${
+            isSaasProject 
+              ? '## SaaS Builder Project\n\nThis project uses the NextMonth visual builder for rapid application development.\n\n### Features\n- Visual drag-and-drop interface\n- Admin panel builder\n- Business planning tools\n- One-click deployment'
+              : '## PaaS Development Project\n\nThis project provides full IDE access for custom development.\n\n### Features\n- Complete code editor\n- Terminal access\n- Git integration\n- Custom deployment configuration'
+          }`,
           projectId: project.id,
         }
       ];
+
+      // Add SaaS-specific configuration files
+      if (isSaasProject) {
+        rootFiles.push({
+          name: 'builder.config.js',
+          path: '/builder.config.js',
+          content: `module.exports = {
+  builderType: 'saas',
+  visualBuilder: {
+    enabled: true,
+    theme: 'default'
+  },
+  adminPanel: {
+    enabled: true,
+    layout: 'sidebar'
+  },
+  businessPlanner: {
+    enabled: true,
+    analytics: true
+  }
+};`,
+          projectId: project.id,
+        });
+      }
 
       for (const file of rootFiles) {
         await storage.createFile(file);

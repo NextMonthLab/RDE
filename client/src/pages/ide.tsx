@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+import { useLocation, useParams } from 'wouter';
+import { ArrowLeft } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { Header } from '@/components/ide/Header';
 import { Sidebar } from '@/components/ide/Sidebar';
 import { EditorArea } from '@/components/ide/EditorArea';
@@ -8,7 +11,9 @@ import { useToast } from '@/hooks/use-toast';
 import type { EditorTab, FileTreeNode, Project } from '@/types/ide';
 
 export default function IDE() {
-  const [currentProjectId, setCurrentProjectId] = useState<number | null>(null);
+  const [, setLocation] = useLocation();
+  const params = useParams();
+  const currentProjectId = params.projectId ? parseInt(params.projectId) : null;
   const [tabs, setTabs] = useState<EditorTab[]>([]);
   const [activeTabId, setActiveTabId] = useState<number | null>(null);
   
@@ -16,15 +21,8 @@ export default function IDE() {
   const { data: projects = [] } = useProjects();
   const { data: currentProject } = useProject(currentProjectId || 0);
 
-  // Set initial project when projects load
-  useEffect(() => {
-    if (projects.length > 0 && !currentProjectId) {
-      setCurrentProjectId(projects[0].id);
-    }
-  }, [projects, currentProjectId]);
-
   const handleProjectChange = (projectId: number) => {
-    setCurrentProjectId(projectId);
+    setLocation(`/ide/${projectId}`);
     // Clear tabs when switching projects
     setTabs([]);
     setActiveTabId(null);
@@ -113,8 +111,11 @@ export default function IDE() {
     return (
       <div className="h-screen flex items-center justify-center bg-slate-900 text-slate-400">
         <div className="text-center">
-          <h2 className="text-xl mb-4">Welcome to NextMonth R.I.D.</h2>
-          <p>Create or select a project to get started.</p>
+          <h2 className="text-xl mb-4">Project not found</h2>
+          <Button onClick={() => setLocation('/')}>
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Hub
+          </Button>
         </div>
       </div>
     );
@@ -122,6 +123,19 @@ export default function IDE() {
 
   return (
     <div className="h-screen flex flex-col bg-slate-900 text-slate-100">
+      {/* IDE Header with back button */}
+      <div className="bg-slate-800 border-b border-slate-700 px-4 py-2 flex items-center justify-between">
+        <div className="flex items-center space-x-4">
+          <Button variant="ghost" size="sm" onClick={() => setLocation('/')}>
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Hub
+          </Button>
+          <div className="text-sm text-slate-400">
+            IDE Mode: {currentProject?.name || 'Loading...'}
+          </div>
+        </div>
+      </div>
+      
       <Header
         currentProject={currentProject || null}
         onProjectChange={handleProjectChange}
