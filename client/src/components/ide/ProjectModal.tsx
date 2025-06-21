@@ -16,11 +16,13 @@ interface ProjectModalProps {
 }
 
 const PROJECT_TEMPLATES = [
-  { value: 'react-typescript', label: 'React + TypeScript' },
-  { value: 'nextjs', label: 'Next.js' },
-  { value: 'nodejs-api', label: 'Node.js API' },
-  { value: 'express-postgresql', label: 'Express + PostgreSQL' },
-  { value: 'blank', label: 'Blank Project' },
+  { value: 'saas-visual', label: 'SaaS Visual App', category: 'saas' },
+  { value: 'saas-admin', label: 'SaaS Admin Panel', category: 'saas' },
+  { value: 'react-typescript', label: 'React + TypeScript', category: 'paas' },
+  { value: 'nextjs', label: 'Next.js', category: 'paas' },
+  { value: 'nodejs-api', label: 'Node.js API', category: 'paas' },
+  { value: 'express-postgresql', label: 'Express + PostgreSQL', category: 'paas' },
+  { value: 'blank', label: 'Blank Project', category: 'paas' },
 ];
 
 export function ProjectModal({ isOpen, onClose, onProjectCreated }: ProjectModalProps) {
@@ -95,7 +97,18 @@ export function ProjectModal({ isOpen, onClose, onProjectCreated }: ProjectModal
                 <SelectValue />
               </SelectTrigger>
               <SelectContent className="bg-slate-700 border-slate-600">
-                {PROJECT_TEMPLATES.map(template => (
+                <div className="px-2 py-1 text-xs font-medium text-slate-400 uppercase tracking-wide">
+                  SaaS Templates
+                </div>
+                {PROJECT_TEMPLATES.filter(t => t.category === 'saas').map(template => (
+                  <SelectItem key={template.value} value={template.value} className="text-slate-100">
+                    {template.label}
+                  </SelectItem>
+                ))}
+                <div className="px-2 py-1 text-xs font-medium text-slate-400 uppercase tracking-wide mt-2">
+                  PaaS Templates
+                </div>
+                {PROJECT_TEMPLATES.filter(t => t.category === 'paas').map(template => (
                   <SelectItem key={template.value} value={template.value} className="text-slate-100">
                     {template.label}
                   </SelectItem>
